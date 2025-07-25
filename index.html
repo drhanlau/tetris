@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tetris Game</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #222;
+        font-family: Arial, sans-serif;
+      }
+      .game-container {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      canvas {
+        border: 2px solid #fff;
+        background-color: #000;
+      }
+      .info-panel {
+        color: #fff;
+        min-width: 200px;
+      }
+      .score {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      .next-piece {
+        margin-bottom: 20px;
+      }
+      .controls {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .game-over {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <canvas id="gameCanvas" width="300" height="600"></canvas>
+      <div class="info-panel">
+        <div class="score">
+          <div>Score: <span id="score">0</span></div>
+          <div>Lines: <span id="lines">0</span></div>
+          <div>Level: <span id="level">1</span></div>
+        </div>
+        <div class="next-piece">
+          <h3>Next:</h3>
+          <canvas id="nextCanvas" width="120" height="120"></canvas>
+        </div>
+        <div class="controls">
+          <h3>Controls:</h3>
+          <p>← → : Move left/right</p>
+          <p>↓ : Soft drop</p>
+          <p>↑ : Rotate</p>
+          <p>Space : Hard drop</p>
+          <p>P : Pause</p>
+        </div>
+      </div>
+    </div>
+    <div class="game-over" id="gameOver">
+      <h2>Game Over!</h2>
+      <p>Final Score: <span id="finalScore">0</span></p>
+      <button onclick="game.restart()">Play Again</button>
+    </div>
+    <script src="tetris.js"></script>
+  </body>
+</html>
